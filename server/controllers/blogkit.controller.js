@@ -1,8 +1,16 @@
 import fs from "fs";
-import imagekit from "../lib/imagekit.js";
+// import imagekit from "../lib/imagekit.js";
 import Blog from "../models/blog.model.js";
 import Comment from "../models/comment.model.js";
 import main from "../config/gemini.js";
+
+import ImageKit from '@imagekit/nodejs';
+
+const imagekit = new ImageKit({
+  publicKey: process.env.IMAGEKIT_PUBLIC_KEY,
+  privateKey: process.env.IMAGEKIT_PRIVATE_KEY,
+  urlEndpoint: process.env.IMAGEKIT_URL_ENDPOINT,
+});
 
 export const addBlog = async (req, res) => {
   try {
